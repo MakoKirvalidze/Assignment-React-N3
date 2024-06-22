@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import BookComponent from './BookComponent';
 
 function App() {
+  const bookInfo = {
+    title: "ვეფხისტყაოსანი",
+    image: require ('./vefxistyaos1.jpg'),
+    description: "შოთა რუსთაველის ეპიკური პოემა, ქართული ლიტერატურის შედევრი.",
+    characters: ["ტარიელი", "ავთანდილი", "ნესტან-დარეჯანი", "თინათინი", "ფრიდონი"]
+  };
+
+  const handleButtonClick = (title, characters) => {
+    console.log(`სათაური: ${title}`);
+    console.log("პერსონაჟები:", characters.join(", "));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BookComponent 
+        title={bookInfo.title}
+        image={bookInfo.image}
+        description={bookInfo.description}
+        characters={bookInfo.characters}
+        onButtonClick={handleButtonClick}
+      />
     </div>
   );
 }
